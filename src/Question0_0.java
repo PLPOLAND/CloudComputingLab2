@@ -19,22 +19,31 @@ public class Question0_0 {
 	public static class MyMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 		@Override
 		protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-			
+			for (String word : value.toString().split("\\s+")) {
+				context.write(new Text(word), new IntWritable(1));
+			}
+
 		}
 	}
 
-	public static class MyReducer extends Reducer<Text, IntWritable, Text, IntWritable> {
+	public static class MyReducer extends Reducer<Text, IntWritable, Text, LongWritable> {
 		@Override
 		protected void reduce(Text key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException {
-				
+			long sum = 0;
+			for (IntWritable value : values) {
+				sum += value.get();
+			}
+			context.write(key, new LongWritable(sum));
 		}
 	}
 
 	public static void main(String[] args) throws Exception {
 		Configuration conf = new Configuration();
 		String[] otherArgs = new GenericOptionsParser(conf, args).getRemainingArgs();
-		String input = otherArgs[0];
-		String output = otherArgs[1];
+		// String input = otherArgs[0];
+		// String output = otherArgs[1];
+		String input = "flickrSample.txt";
+		String output = "output.txt";
 		
 		Job job = Job.getInstance(conf, "Question0_0");
 		job.setJarByClass(Question0_0.class);
