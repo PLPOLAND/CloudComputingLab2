@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.PriorityQueue;
 
@@ -29,7 +30,7 @@ public class Question4_0 {
 			String tags[] = rekord[8].split(",");
 			if (Country.getCountryAt(x,y)!=null) {
 				for (String tag : tags) {
-					context.write(new Text(Country.getCountryAt(x,y).toString()), new Text(tag));
+					context.write(new Text(Country.getCountryAt(x,y).toString()), new Text(URLDecoder.decode(tag)));
 					
 				}
 			}
