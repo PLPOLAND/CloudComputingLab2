@@ -12,18 +12,18 @@ This dataset contains a list of photos and videos. This list is compiled from da
 Note that, before publishing any photo or video in a report or elsewhere, it must be ensured that the photo is still available in the public domain.
 
 This dataset is formed by a single file that contains the following tab-separated fields per line:
-   * Photo/video identifier
-   * User NSID
-   * User nickname
-   * Date taken
-   * Date uploaded
-   * Capture device
-   * Title
-   * Description
-   * User tags (comma-separated)
-   * Machine tags (comma-separated)
-   * Longitude
-   * Latitude
+   0* Photo/video identifier
+   1* User NSID
+   2* User nickname
+   3* Date taken
+   4* Date uploaded
+   5* Capture device
+   6* Title
+   7* Description
+   8* User tags (comma-separated)
+   9* Machine tags (comma-separated)
+   10* Longitude
+   11* Latitude
    * Accuracy
    * Photo/video page URL
    * Photo/video download URL
