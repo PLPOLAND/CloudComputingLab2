@@ -8,8 +8,8 @@ import org.apache.hadoop.io.Writable;
 
 public class StringAndInt implements Comparable<StringAndInt>, Writable{
 
-	Text tag;
-	IntWritable howMany;
+	private Text tag; //Użyty Text, ponieważ był problem z String w metodach z interfejsu Writable
+	private IntWritable howMany;// Tak samo jak wyżej
 
 	public StringAndInt() {
 		tag = new Text();
